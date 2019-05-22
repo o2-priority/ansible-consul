@@ -1,4 +1,4 @@
-require 'spec_helper'
+require '/tmp/kitchen/spec/spec_helper.rb'
 
 consul_user     = 'consul'
 consul_group    = consul_user
@@ -6,6 +6,11 @@ consul_home     = '/opt/consul'
 consul_bin_dir  = '/usr/local/bin'
 consul_conf_dir = '/etc/consul.d'
 consul_scripts  = %w( disk.sh mem.sh )
+pkg_list  = %w( jq python-pip unzip )
+
+if os[:family] =~ /centos|redhat/
+  pkg_list  = %w( jq python2-pip unzip )
+end
 
 describe group(consul_group) do
   it { should exist }
@@ -16,7 +21,7 @@ describe user(consul_user) do
   it { should belong_to_group consul_group }
 end
 
-%w( jq python-pip unzip ).each do |pkg|
+pkg_list.each do |pkg|
   describe package(pkg) do
     it { should be_installed }
   end
