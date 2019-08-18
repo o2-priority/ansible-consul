@@ -1,3 +1,5 @@
 ---
 
 consul_systemd_units_dir: /lib/systemd/system
+
+configure_firewalld: false

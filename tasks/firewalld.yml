@@ -1,0 +1,57 @@
+#https://www.consul.io/docs/install/ports.html
+
+- name: open port 8500 tcp
+  firewalld:
+    port: 8500/tcp
+    permanent: yes
+    immediate: yes
+    state: enabled
+
+- name: open port 8600 tcp
+  firewalld:
+    port: 8600/tcp
+    permanent: yes
+    immediate: yes
+    state: enabled
+
+- name: open port 8600 udp
+  firewalld:
+    port: 8600/udp
+    permanent: yes
+    immediate: yes
+    state: enabled
+
+- name: open port 8300 tcp
+  firewalld:
+    port: 8300/tcp
+    permanent: yes
+    immediate: yes
+    state: enabled
+
+- name: open port 8301 tcp
+  firewalld:
+    port: 8301/tcp
+    permanent: yes
+    immediate: yes
+    state: enabled
+
+- name: open port 8302 tcp
+  firewalld:
+    port: 8302/tcp
+    permanent: yes
+    immediate: yes
+    state: enabled
+
+- name: open port 8301 udp
+  firewalld:
+    port: 8301/udp
+    permanent: yes
+    immediate: yes
+    state: enabled
+
+- name: open port 8302 udp
+  firewalld:
+    port: 8302/udp
+    permanent: yes
+    immediate: yes
+    state: enabled
