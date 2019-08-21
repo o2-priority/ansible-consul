@@ -1,11 +1,16 @@
 #https://www.consul.io/docs/install/ports.html
 
+- name: Check firewalld configuration
+  shell: firewall-cmd --list-ports
+  register: firewall_result
+
 - name: open port 8500 tcp
   firewalld:
     port: 8500/tcp
     permanent: yes
     immediate: yes
     state: enabled
+  when: "'8500/tcp' not in firewall_result.stdout"
 
 - name: open port 8600 tcp
   firewalld:
@@ -13,6 +18,7 @@
     permanent: yes
     immediate: yes
     state: enabled
+  when: "'8600/tcp' not in firewall_result.stdout"
 
 - name: open port 8600 udp
   firewalld:
@@ -20,6 +26,7 @@
     permanent: yes
     immediate: yes
     state: enabled
+  when: "'8600/udp' not in firewall_result.stdout"
 
 - name: open port 8300 tcp
   firewalld:
@@ -27,6 +34,7 @@
     permanent: yes
     immediate: yes
     state: enabled
+  when: "'8300/tcp' not in firewall_result.stdout"
 
 - name: open port 8301 tcp
   firewalld:
@@ -34,6 +42,7 @@
     permanent: yes
     immediate: yes
     state: enabled
+  when: "'8301/tcp' not in firewall_result.stdout"
 
 - name: open port 8302 tcp
   firewalld:
@@ -41,6 +50,7 @@
     permanent: yes
     immediate: yes
     state: enabled
+  when: "'8302/tcp' not in firewall_result.stdout"
 
 - name: open port 8301 udp
   firewalld:
@@ -48,6 +58,7 @@
     permanent: yes
     immediate: yes
     state: enabled
+  when: "'8301/udp' not in firewall_result.stdout"
 
 - name: open port 8302 udp
   firewalld:
@@ -55,3 +66,4 @@
     permanent: yes
     immediate: yes
     state: enabled
+  when: "'8302/udp' not in firewall_result.stdout"
