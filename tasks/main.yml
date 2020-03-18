@@ -121,6 +121,14 @@
     mode:  0755
   with_items: "{{ consul_scripts }}"
 
+- name: Create consul logrotate config file
+  template:
+    src:   consul-log.logrotate.j2
+    dest:  "/etc/logrotate.d/consul-log"
+    owner: root
+    group: root
+    mode:  0644
+
 #- name: Create watchers service definition
 #  template: src=watchers.json.j2 dest={{ consul_conf_dir }}/watchers.json mode=0644
 
