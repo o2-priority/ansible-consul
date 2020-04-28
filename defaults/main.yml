@@ -28,8 +28,8 @@ consul_performance_raft_multiplier: 1
 
 consul_node_type: server
 consul_pip_pkgs:
-  - python-consul
-  - requests
+  - python-consul==1.1.0
+  - requests==2.6.0
 
 consul_prereq_pkgs: [ jq, unzip, python-pip ]
 
